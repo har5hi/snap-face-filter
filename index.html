@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SnapAura</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <h1> Snap with Filters </h1>
+
+  <!-- Filters -->
+  <div class="controls">
+    <button onclick="changeFilter('glasses')">😎</button>
+    <button onclick="changeFilter('crown')">👑</button>
+    <button onclick="changeFilter('dog')">🐶</button>
+    <button onclick="changeFilter('hearts')">❤️</button>
+    <button onclick="changeFilter('flower')">🌸</button>
+    <button onclick="changeFilter('mask')">😷</button>
+    <button onclick="changeFilter('nose')">🤡</button>
+    <button onclick="changeFilter('cap')">🧢</button>
+    <button onclick="changeFilter('ghost')">👀</button>
+    <button onclick="changeFilter('none')">❌</button>
+  </div>
+
+  <!-- Capture -->
+  <button id="captureBtn">📸 Capture</button>
+
+  <!-- Camera Container -->
+  <div class="camera-box">
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <!-- Preview -->
+  <img id="preview" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>

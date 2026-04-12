@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Snap with Filters</title>
+  
+  <!-- Add Poppins Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+
+  <div class="app">
+    <!-- WELCOME SCREEN -->
+    <div id="welcomeScreen" class="screen active">
+      <h1 style="font-weight: 600; color: white; text-shadow: 0 4px 10px rgba(0,0,0,0.1);">Snap with Filters</h1>
+      <p style="color: white; opacity: 0.9;">Start snapping your vibe ✨</p>
+      <button id="startBtn" class="pill-btn">Start</button>
+    </div>
+
+    <!-- CAMERA SCREEN -->
+    <div id="cameraScreen" class="screen">
+      <div class="camera-container">
+        
+        <video id="video" autoplay playsinline></video>
+        
+        <!-- CAMERA FRAME (focus box) -->
+        <div class="camera-frame">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <!-- OVERLAY UI -->
+        <div class="camera-ui">
+          
+          <div class="focus-border"></div>
+          
+          <div class="filters">
+            <button onclick="setFilter('glasses')" class="glass-btn">😎</button>
+            <button onclick="setFilter('crown')" class="glass-btn">👑</button>
+            <button onclick="setFilter('dog')" class="glass-btn">🐶</button>
+            <button onclick="setFilter('hearts')" class="glass-btn">❤️</button>
+            <button onclick="setFilter('flower')" class="glass-btn">🌸</button>
+            <button onclick="setFilter('mask')" class="glass-btn">😷</button>
+            <button onclick="setFilter('clown')" class="glass-btn">🤡</button>
+            <button onclick="setFilter('cap')" class="glass-btn">🧢</button>
+            <button onclick="setFilter('eyes')" class="glass-btn">👀</button>
+            <button onclick="setFilter('none')" class="glass-btn">❌</button>
+          </div>
+
+          <!-- BOTTOM CONTROLS -->
+          <div class="bottom-bar">
+            <button id="galleryBtn" class="glass-btn" style="min-width: 60px; height: 60px;">🖼️</button>
+            <button id="captureBtn" class="capture-btn"></button>
+            <button id="switchBtn" class="glass-btn" style="min-width: 60px; height: 60px;">🔄</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- PREVIEW SCREEN -->
+    <div id="previewScreen" class="screen">
+      <img id="capturedImage" style="max-height: 60vh; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); object-fit: contain; margin-bottom: 30px;" />
+      <div style="display:flex; gap: 20px;">
+        <button id="retakeBtn" class="pill-btn">Retake</button>
+        <button id="saveBtn" class="pill-btn" style="background: white; color: #ff6a88;">Save</button>
+      </div>
+    </div>
+
+    <!-- GALLERY SCREEN -->
+    <div id="galleryScreen" class="screen">
+      <h2 style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.1);">Your Snaps</h2>
+      <div id="galleryGrid"></div>
+      <button id="backToCameraBtn" class="pill-btn">Back to Camera</button>
+    </div>
+  </div>
+
+  <!-- MediaPipe -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+  <script src="script.js?v=8"></script>
+</body>
+</html>

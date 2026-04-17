@@ -79,7 +79,6 @@ cd snap-face-filter
 ## 🧑‍💻 Author
 
 **Harshita**
-BTech Student
 
 ---
 
@@ -95,7 +94,3 @@ BTech Student
 ## 🌟 Show Your Support
 
 If you like this project, give it a ⭐ on GitHub!
-
-
-## 🌍 Live Demo
-[Click here to try it](https://har5hi.github.io/snap-face-filter/)

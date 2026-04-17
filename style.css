@@ -6,7 +6,6 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  text-align: center;
   overflow: hidden;
 }
 
@@ -17,17 +16,16 @@ body {
   overflow: hidden;
 }
 
+/* ================== SHARED SCREENS ================== */
 .screen {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Correct opacity logic for smooth animations allowing CSS transitions without breaking display models */
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.4s ease, visibility 0.4s;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,16 +39,32 @@ body {
   z-index: 2;
 }
 
-/* ================== SHARED BUTTONS ================== */
+.welcome-title {
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-subtitle {
+  color: white;
+  opacity: 0.9;
+}
+
+/* ================== BUTTONS ================== */
 .pill-btn {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 10px;
-  padding: 12px 30px;
+  margin-top: 15px;
+  /* Fine tuning alignment slightly if capture-btn overflows bounds */
+  padding: 0 30px;
   font-size: 18px;
   cursor: pointer;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.2);
   border-radius: 30px;
-  /* Instead of circle, use pill for text */
   border: none;
   color: white;
   transition: 0.3s;
@@ -75,114 +89,117 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 55px;
+  height: 55px;
+  flex-shrink: 0;
 }
 
 .glass-btn:hover {
   transform: scale(1.1);
 }
 
-/* ================== CAMERA ================== */
-.camera-container {
-  position: relative;
+/* ================== CAMERA SCREEN (NEW LAYOUT) ================== */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+}
+
+.camera-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.camera-frame {
+  width: 320px;
+  height: 420px;
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background: black;
 }
 
 video {
   display: none;
 }
 
-.camera-frame {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  width: 320px;
-  height: 420px;
-  transform: translate(-50%, -50%);
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  z-index: 2;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.camera-frame canvas {
+canvas {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.focus-border {
-  display: none;
-  /* Removing harsh old white border, relying on native frame shadow for premium feel */
-}
-
-/* UI */
-.camera-ui {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 4;
-  pointer-events: none;
-}
-
 .filters {
-  position: absolute;
-  bottom: 160px;
-  width: 100%;
+  margin-top: 20px;
   display: flex;
-  overflow-x: auto;
   gap: 12px;
-  justify-content: center;
-  padding: 10px;
-  pointer-events: all;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  overflow-x: auto;
+  max-width: 100%;
+  /* keep it nicely bound */
 }
 
-/* Hide scrollbar for cleanly native look */
 .filters::-webkit-scrollbar {
   display: none;
 }
 
-.filters .glass-btn {
-  min-width: 55px;
-  height: 55px;
-  font-size: 22px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
 .bottom-bar {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  pointer-events: all;
 }
 
-/* PREMIUM CAPTURE BUTTON */
 .capture-btn {
-  width: 75px;
-  height: 75px;
-  background: linear-gradient(145deg, #ff6a88, #ff99ac);
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  border: 6px solid white;
-  box-shadow: 0 0 20px rgba(255, 105, 135, 0.6);
-  transition: 0.2s;
-  margin: 0;
-  padding: 0;
+  background: #ff6b81;
+  border: 5px solid white;
   cursor: pointer;
-  pointer-events: all;
+  transition: 0.2s;
+  box-shadow: 0 0 20px rgba(255, 105, 135, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.capture-btn {
+  background: linear-gradient(145deg, #ff6a88, #ff99ac);
+  box-shadow: 0 0 25px rgba(255, 105, 135, 0.6);
+  transition: 0.2s;
+}
+
+.capture-btn:hover {
+  transform: scale(1.1);
 }
 
 .capture-btn:active {
   transform: scale(0.9);
+}
+
+.capture-btn:active {
+  transform: scale(0.9);
+}
+
+.text-section {
+  text-align: center;
+  color: white;
+}
+
+.text-section h1 {
+  font-weight: 700;
+  font-size: 36px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* ================== GALLERY ================== */
@@ -207,102 +224,16 @@ video {
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
 
-    {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1d2671, #c33764);
-    color: white;
-    text-align: center;
-  }
+.glass-btn {
+  transition: all 0.25s ease;
+}
 
-  h1 {
-    margin-top: 20px;
-    font-size: 36px;
-    font-weight: 700;
-  }
+.glass-btn:hover {
+  transform: scale(1.15);
+}
 
-  .controls {
-    margin: 20px 0;
-  }
-
-  button {
-    border: none;
-    margin: 6px;
-    padding: 12px 16px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 18px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    color: white;
-    transition: 0.3s;
-  }
-
-  button:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.3);
-  }
-
-  #captureBtn {
-    background: #ff4d6d;
-    font-size: 20px;
-    padding: 12px 20px;
-    margin-bottom: 20px;
-  }
-
-  .camera-box {
-    position: relative;
-    width: 640px;
-    height: 480px;
-    margin: auto;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  }
-
-  .camera-box {
-    position: relative;
-    width: 640px;
-    height: 480px;
-    margin: auto;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  }
-
-  /* FIXED VIDEO */
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 640px;
-    height: 480px;
-    object-fit: cover;
-    z-index: 1;
-  }
-
-  /* FIXED CANVAS */
-  canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 640px;
-    height: 480px;
-    z-index: 2;
-  }
-
-  canvas {
-    z-index: 2;
-  }
-
-  video {
-    z-index: 1;
-  }
-
-  #preview {
-    margin-top: 20px;
-    width: 200px;
-    border-radius: 15px;
-    display: none;
-  }
+.glass-btn:active {
+  transform: scale(0.9);
+}

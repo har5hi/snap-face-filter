@@ -53,9 +53,9 @@ cd snap-face-filter
 
 ---
 
-## 🌐 Live Demo (Will Add after deployment)
+## 🌐 Live Demo
 
-👉 Coming soon...
+https://snapwithfilters.netlify.app/
 
 ---
 

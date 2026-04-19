@@ -59,14 +59,6 @@ https://snapwithfilters.netlify.app/
 
 ---
 
-## 📸 Screenshots
-
-* Camera with filters
-* Gallery view
-* UI interface
-  
----
-
 ## 💡 Key Highlights
 
 * Dynamic filter positioning using facial landmarks
